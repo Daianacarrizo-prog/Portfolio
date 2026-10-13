@@ -27,15 +27,15 @@
     <a class="btn" href="index.html">Volver al inicio</a>
   </main>
 
-  <script>
-    // Muestra la ruta que el visitante intentó abrir
-    document.getElementById("path").textContent = location.pathname.replace(/^\/+/, "") || "/";
-
-    // Respeta el modo claro u oscuro elegido en el portfolio
-    try {
-      var t = localStorage.getItem("theme");
-      if (t) document.documentElement.setAttribute("data-theme", t);
-    } catch (e) {}
-  </script>
+ <script>
+  if (location.protocol !== "file:") {
+    var base = "/";
+    if (location.hostname.endsWith("github.io")) {
+      var first = location.pathname.split("/")[1];
+      if (first) base = "/" + first + "/";
+    }
+    document.write('<base href="' + base + '">');
+  }
+</script>
 </body>
 </html>
