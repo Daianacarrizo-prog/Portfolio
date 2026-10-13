@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>404 | Página no encontrada</title>
+  <meta name="robots" content="noindex">
+  <script>
+    // En GitHub Pages el sitio vive en /nombre-del-repo/; esto hace que 404.css cargue desde cualquier ruta
+    if (location.hostname.endsWith("github.io")) {
+      var first = location.pathname.split("/")[1];
+      document.write('<base href="/' + (first ? first + "/" : "") + '">');
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="404.css">
+</head>
+<body>
+  <main>
+    <p class="code" aria-hidden="true">404</p>
+    <h1>Esta página no existe</h1>
+    <p>Puede que el enlace esté mal escrito o que la página haya cambiado de lugar. Volvé al inicio para seguir viendo mi portfolio.</p>
+
+
+    <a class="btn" href="index.html">Volver al inicio</a>
+  </main>
+
+  <script>
+    // Muestra la ruta que el visitante intentó abrir
+    document.getElementById("path").textContent = location.pathname.replace(/^\/+/, "") || "/";
+
+    // Respeta el modo claro u oscuro elegido en el portfolio
+    try {
+      var t = localStorage.getItem("theme");
+      if (t) document.documentElement.setAttribute("data-theme", t);
+    } catch (e) {}
+  </script>
+</body>
+</html>
